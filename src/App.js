@@ -1,7 +1,8 @@
 import "./App.css";
 
 function App() {
-  return <div className="App">chào mung ban đen vơi LRO</div>;
+  return <div className="App">Ngoc vi LRO</div>;
+  
 }
 
 export default App;
