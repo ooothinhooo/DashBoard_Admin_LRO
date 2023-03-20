@@ -1,8 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import StatusCard from "components/StatusCard";
 import TableCard from "components/TableCard";
 import TableDoc from "components/Documents/TableDoc.js";
+
+import { api } from "services/api.js";
+const myApi = new api();
 function DocumentManagement() {
+  const [data, setData] = useState([]);
+
+  const GetApi = () => {
+    myApi
+      .FUNC_GET_STATISTICSDOCS()
+      .then((response) => {
+        console.log(response.data.data);
+        setData(response.data.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  useEffect(() => {
+    GetApi();
+  }, []);
+
   return (
     <>
       <div className="bg-light-blue-500 pt-14 pb-28 px-3 md:px-8 h-auto">
@@ -12,7 +32,7 @@ function DocumentManagement() {
               color="pink"
               icon="trending_up"
               title="Total Docs"
-              amount="350,897"
+              amount={data?.TotalDoc}
               percentage="3.48"
               percentageIcon="arrow_upward"
               percentageColor="green"
@@ -22,7 +42,7 @@ function DocumentManagement() {
               color="orange"
               icon="groups"
               title="New Docs"
-              amount="2,356"
+              amount={data?.NewDoc}
               percentage="3.48"
               percentageIcon="arrow_downward"
               percentageColor="red"
@@ -32,7 +52,7 @@ function DocumentManagement() {
               color="purple"
               icon="paid"
               title="Total View"
-              amount="924"
+              amount={data?.TotalViewDoc}
               percentage="1.10"
               percentageIcon="arrow_downward"
               percentageColor="orange"
@@ -41,8 +61,8 @@ function DocumentManagement() {
             <StatusCard
               color="blue"
               icon="poll"
-              title="View to day"
-              amount="49,65%"
+              title="Total Like"
+              amount={data?.TotalLikeDoc}
               percentage="12"
               percentageIcon="arrow_upward"
               percentageColor="green"

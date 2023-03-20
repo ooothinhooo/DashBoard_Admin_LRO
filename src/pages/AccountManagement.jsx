@@ -1,7 +1,27 @@
-import React from "react";
+import { useEffect, useState } from "react";
+
 import StatusCard from "components/StatusCard";
 import TableCard from "components/TableCard";
+
+import { api } from "services/api.js";
+const myApi = new api();
 function AccountManagement() {
+  const [dataUser, setDataUser] = useState([]);
+
+  const GetApi = () => {
+    myApi
+      .FUNC_GET_STATISTICSUSERS()
+      .then((response) => {
+        // console.log(response.data.data);
+        setDataUser(response.data.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  useEffect(() => {
+    GetApi();
+  }, []);
   return (
     <div>
       <div className="bg-light-blue-500 pt-14 pb-28 px-3 md:px-8 h-auto">
@@ -11,7 +31,7 @@ function AccountManagement() {
               color="pink"
               icon="trending_up"
               title="Total Users"
-              amount="350,897"
+              amount={`${dataUser.TotalUser}`}
               percentage="3.48"
               percentageIcon="arrow_upward"
               percentageColor="green"

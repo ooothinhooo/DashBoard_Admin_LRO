@@ -1,39 +1,47 @@
-import { useEffect } from 'react';
-import Chart from 'chart.js';
-import Card from '@material-tailwind/react/Card';
-import CardHeader from '@material-tailwind/react/CardHeader';
-import CardBody from '@material-tailwind/react/CardBody';
-
+import Chart from "chart.js";
+import Card from "@material-tailwind/react/Card";
+import CardHeader from "@material-tailwind/react/CardHeader";
+import CardBody from "@material-tailwind/react/CardBody";
+import { api } from "services/api.js";
+import { useEffect, useState } from "react";
+const myApi = new api();
 
 export default function ChartLine() {
-  const dataDay = [];
-  for (let i = 6; i >= 0; i--) {
-    const date = new Date();
-    date.setDate(date.getDate() - i);
-    const formattedDate =
-      date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
-    dataDay.push(formattedDate);
-  }
-  console.log(dataDay);
+  const [labels, setlabels] = useState([]);
+  const [dataDoc, setDataDoc] = useState([]);
+  const [dataArt, setDataArt] = useState([]);
+
+  const GetApi = async () => {
+    try {
+      const result = await myApi.FUNC_GET_CHART();
+      console.log(result);
+      if (result.data.status == 200) {
+        setDataDoc(result.data.data.DocArr);
+        setDataArt(result.data.data.ArtArr);
+        setlabels(result.data.data.ArrDay);
+      }
+    } catch (error) {}
+  };
   useEffect(() => {
+    GetApi();
     var config = {
       type: "line",
       data: {
-        labels: dataDay,
+        labels: labels,
         datasets: [
           {
-            label: new Date().getFullYear(),
+            label: "Docs",
             backgroundColor: "#03a9f4",
             borderColor: "#03a9f4",
-            data: [0, 0, 0, 1, 11, 2, 1],
+            data: dataDoc,
             fill: false,
           },
           {
-            label: new Date().getFullYear() - 1,
+            label: "Arts",
             fill: false,
             backgroundColor: "#ff9800",
             borderColor: "#ff9800",
-            data: [33, 6, 4, 7, 9, 22, 99],
+            data: dataArt,
           },
         ],
       },
@@ -111,6 +119,7 @@ export default function ChartLine() {
     var ctx = document.getElementById("line-chart").getContext("2d");
     window.myLine = new Chart(ctx, config);
   }, []);
+  useEffect(() => {}, []);
 
   return (
     <Card>
