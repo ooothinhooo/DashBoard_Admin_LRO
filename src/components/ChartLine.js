@@ -7,9 +7,17 @@ import { useEffect, useState } from "react";
 const myApi = new api();
 
 export default function ChartLine() {
-  const [labels, setlabels] = useState([]);
-  const [dataDoc, setDataDoc] = useState([]);
-  const [dataArt, setDataArt] = useState([]);
+  const [labels, setlabels] = useState([
+    "16/3/2023",
+    "17/3/2023",
+    "18/3/2023",
+    "19/3/2023",
+    "20/3/2023",
+    "21/3/2023",
+    "22/3/2023",
+  ]);
+  const [dataDoc, setDataDoc] = useState([2, 24, 6, 8, 44, 12, 36]);
+  const [dataArt, setDataArt] = useState([1, 3, 5, 7, 9, 11, 19]);
 
   const GetApi = async () => {
     try {
@@ -119,7 +127,7 @@ export default function ChartLine() {
     var ctx = document.getElementById("line-chart").getContext("2d");
     window.myLine = new Chart(ctx, config);
   }, []);
-  useEffect(() => {}, []);
+
 
   return (
     <Card>

@@ -1,8 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import StatusCard from "components/StatusCard";
 import CardArts from "components/Articles/CardArts.js";
 
+import { api } from "services/api.js";
+const myApi = new api();
 function ArticleManagement() {
+  const [data, setData] = useState([]);
+
+  const GetApi = () => {
+    myApi
+      .FUNC_GET_STATISTICSARTS()
+      .then((response) => {
+        console.log(response.data.data);
+        setData(response.data.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  useEffect(() => {
+    GetApi();
+  }, []);
+
   return (
     <>
       <div className="bg-light-blue-500 pt-14 pb-28 px-3 md:px-8 h-auto">
@@ -11,8 +30,8 @@ function ArticleManagement() {
             <StatusCard
               color="pink"
               icon="trending_up"
-              title="Total Docs"
-              amount="350,897"
+              title="Total Arts"
+              amount={data?.TotalArt}
               percentage="3.48"
               percentageIcon="arrow_upward"
               percentageColor="green"
@@ -21,8 +40,8 @@ function ArticleManagement() {
             <StatusCard
               color="orange"
               icon="groups"
-              title="New Docs"
-              amount="2,356"
+              title="New Arts"
+              amount={data?.NewArt}
               percentage="3.48"
               percentageIcon="arrow_downward"
               percentageColor="red"
@@ -32,7 +51,7 @@ function ArticleManagement() {
               color="purple"
               icon="paid"
               title="Total View"
-              amount="924"
+              amount={data?.TotalViewArt}
               percentage="1.10"
               percentageIcon="arrow_downward"
               percentageColor="orange"
@@ -41,8 +60,8 @@ function ArticleManagement() {
             <StatusCard
               color="blue"
               icon="poll"
-              title="View to day"
-              amount="49,65%"
+              title="Total Like"
+              amount={data?.TotalLikeArt}
               percentage="12"
               percentageIcon="arrow_upward"
               percentageColor="green"

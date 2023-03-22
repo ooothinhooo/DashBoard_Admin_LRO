@@ -554,13 +554,13 @@ video {
 	margin-left: 0.5rem;
 	margin-right: 0.5rem;
 }
-.my-4{
-	margin-top: 1rem;
-	margin-bottom: 1rem;
-}
 .my-2{
 	margin-top: 0.5rem;
 	margin-bottom: 0.5rem;
+}
+.my-4{
+	margin-top: 1rem;
+	margin-bottom: 1rem;
 }
 .mx-1{
 	margin-left: 0.25rem;
@@ -683,9 +683,6 @@ video {
 .h-screen{
 	height: 100vh;
 }
-.h-\[70\%\]{
-	height: 70%;
-}
 .min-h-full{
 	min-height: 100%;
 }
@@ -715,9 +712,6 @@ video {
 }
 .w-auto{
 	width: auto;
-}
-.w-72{
-	width: 18rem;
 }
 .min-w-full{
 	min-width: 100%;
@@ -772,9 +766,6 @@ video {
 }
 .justify-end{
 	justify-content: flex-end;
-}
-.justify-around{
-	justify-content: space-around;
 }
 .gap-2{
 	gap: 0.5rem;
