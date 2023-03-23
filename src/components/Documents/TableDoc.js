@@ -32,7 +32,7 @@ function TableDoc() {
     } catch (error) {}
   };
 
-  const DeleteDoc = async (userId, _id) => {
+  const handlerDeleteDoc = async (userId, _id) => {
     try {
       const result = await myApi.FUNC_DELETE_DOC(userId, _id);
       console.log(result.data);
@@ -47,6 +47,23 @@ function TableDoc() {
         });
       }
       // setDataDocs(result.data);
+    } catch (error) {}
+  };
+  const DeleteDoc = async (userId, _id, title) => {
+    try {
+      Swal.fire({
+        title: "Bạn Chắc Chắn Muốn Xoá Tài Liệu",
+        text: title,
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          handlerDeleteDoc(userId, _id, title);
+        }
+      });
     } catch (error) {}
   };
 
@@ -84,7 +101,11 @@ function TableDoc() {
                               </p>
                               <Button
                                 onClick={(e) =>
-                                  DeleteDoc(item?.creatorsId, item?._id)
+                                  DeleteDoc(
+                                    item?.creatorsId,
+                                    item?._id,
+                                    item?.title
+                                  )
                                 }
                               >
                                 Delete

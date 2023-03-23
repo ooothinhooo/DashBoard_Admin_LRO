@@ -3,3 +3,4 @@ export { default as Dashboard } from "./Dashboard.js";
 export { default as AccountManagement } from "./AccountManagement.jsx";
 export { default as ArticleManagement } from "./ArticleManagement.jsx";
 export { default as DocumentManagement } from "./DocumentManagement.jsx";
+export { default as Login } from "./Login.jsx";

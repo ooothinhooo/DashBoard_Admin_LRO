@@ -28,7 +28,7 @@ export default function CardArts() {
     setPage(page <= 1 ? 1 : page - 1);
   };
 
-  const DeleteArt = async (userId, _id) => {
+  const handlerDeleteArt = async (userId, _id, title) => {
     try {
       const result = await myApi.FUNC_DELETE_ART(userId, _id);
       console.log(result.data);
@@ -37,13 +37,30 @@ export default function CardArts() {
         Swal.fire({
           position: "center",
           icon: "success",
-          title: "Xoá 1 Doc Thành Công",
+          // text: title,
+          title: "Xoá Bài Viết Thành Công",
           showConfirmButton: false,
           timer: 1500,
         });
       }
       // setDataDocs(result.data);
     } catch (error) {}
+  };
+
+  const DeleteArt = async (userId, _id, title) => {
+    Swal.fire({
+      title: "Bạn Chắc Chắn Muốn Xoá Bài Viết",
+      text: title,
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        handlerDeleteArt(userId, _id, title);
+      }
+    });
   };
 
   useEffect(() => {
@@ -120,7 +137,7 @@ export default function CardArts() {
                         </div>
                         <Button
                           onClick={(e) =>
-                            DeleteArt(item?.creatorsId, item?._id)
+                            DeleteArt(item?.creatorsId, item?._id, item?.title)
                           }
                         >
                           Delete

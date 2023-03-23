@@ -3,12 +3,15 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import App from 'App';
 import reportWebVitals from './reportWebVitals';
+import ProductContextProvider from "contexts/ProductContextProvider.js";
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <ProductContextProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </ProductContextProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

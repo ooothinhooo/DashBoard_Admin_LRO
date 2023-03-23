@@ -11,6 +11,14 @@ import {
   StatisticsUsers,
 } from "./apiConstan.js";
 export class api {
+  async LOGIN(data) {
+    return axios({
+      method: "post",
+      url: "http://localhost:8080/api/login",
+      data,
+    });
+  }
+
   async FUNC_GET_STATISTICSUSERS() {
     return axios({
       method: "get",
