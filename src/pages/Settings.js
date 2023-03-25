@@ -3,7 +3,9 @@ import SettingsForm from 'components/SettingsForm';
 import ProfileCard from 'components/ProfileCard';
 import { ProductContext } from "contexts/ProductContextProvider.js";
 import { useContext } from "react";
-
+import { api } from "services/api.js";
+import { useEffect, useState } from "react";
+const myApi = new api();
 export default function Dashboard() {
   const { user } = useContext(ProductContext);
 

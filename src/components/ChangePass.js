@@ -10,7 +10,8 @@ import {
 } from "@material-tailwind/react";
 import Swal from "sweetalert2";
 import axios from "axios";
-
+import { api } from "services/api.js";
+const myApi = new api();
 export default function ChangePass({ user }) {
   // const { user } = useContext(ProductContext);
   let auth = user?.token;
@@ -21,18 +22,15 @@ export default function ChangePass({ user }) {
   const [isConfirmPass, setIsConfirmPass] = useState();
   const [Form, setForm] = useState({
     oldPassword: "",
+    ConfirmPass: "",
     password: "",
   });
-  const handleChange = async (e) => {
-    console.log("change");
-    if (isConfirmPass == isPass) {
-      const result = await axios.post({
-        headers: { auth: auth },
-
-        url: `http://localhost:8080/apiart/changepass`,
-        data: { Form },
-      });
+  const handleSubmit = async (e) => {
+    if (Form.ConfirmPass == Form.password) {
+      const result = await myApi.FUNC_CHANGE_PASS(auth, Form);
       console.log(result);
+      console.log("change");
+
       if (result.data.status == 200) {
         let timerInterval;
         Swal.fire({
@@ -75,13 +73,17 @@ export default function ChangePass({ user }) {
     }
   };
 
-  useEffect(() => {
+  const handleChange = (e) => {
     setForm({
-      oldPassword: isOldPass,
-      password: isConfirmPass,
+      ...Form,
+      [e.target.name]: e.target.value,
     });
+  };
+
+  useEffect(() => {
     console.log(Form);
-  }, [isPass, isConfirmPass, isOldPass]);
+  }, [Form]);
+
   return (
     <Card className="w-[50%]">
       <CardHeader
@@ -95,29 +97,35 @@ export default function ChangePass({ user }) {
       </CardHeader>
       <CardBody className="flex flex-col gap-4">
         <Input
-          value={isOldPass}
-          onChange={(e) => setOldIsPass(e.target.value)}
+          // value={isOldPass}
+          name="oldPassword"
+          onChange={handleChange}
+          // onChange={(e) => setOldIsPass(e.target.value)}
           label="Old Pass"
           size="lg"
           placeholder="Current Password"
         />
         <Input
-          value={isPass}
-          onChange={(e) => setIsPass(e.target.value)}
+          onChange={handleChange}
+          // onChange={(e) => setIsPass(e.target.value)}
+          // value={isPass}
+          name="password"
           label="Password"
           size="lg"
           placeholder="New Password"
         />
         <Input
-          value={isConfirmPass}
-          onChange={(e) => setIsConfirmPass(e.target.value)}
+          // value={isConfirmPass}
+          name="ConfirmPass"
+          onChange={handleChange}
+          // onChange={(e) => setIsConfirmPass(e.target.value)}
           label="Password"
           size="lg"
           placeholder="Password"
         />
       </CardBody>
       <CardFooter className="pt-0">
-        <Button onClick={handleChange} variant="gradient" fullWidth>
+        <Button onClick={handleSubmit} variant="gradient" fullWidth>
           Submit
         </Button>
       </CardFooter>

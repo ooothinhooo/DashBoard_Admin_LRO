@@ -91,8 +91,30 @@ export class api {
       method: "post",
       headers: { auth: auth },
 
-      url: `$http://localhost:8080/apiart/changepass`,
+      url: `http://localhost:8080/apiart/changepass`,
       data,
+    });
+  }
+
+  async FUNC_UPDATE_PROFILE_USER(auth, data) {
+    return axios({
+      method: "post",
+      headers: { auth: auth },
+  
+      url: `http://localhost:8080/apiart/updateinfo`,
+      data
+    });
+  }
+
+  async FUNC_VIEW_PROFILE_USER(_id) {
+    return axios({
+      method: "post",
+      // headers: { auth: auth },
+  
+      url: `http://localhost:8080/api/user/`,
+      data: {
+        _id: _id,
+      },
     });
   }
 }

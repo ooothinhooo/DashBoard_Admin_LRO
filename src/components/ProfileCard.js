@@ -9,10 +9,13 @@ import Button from '@material-tailwind/react/Button';
 import ProfilePicture from 'assets/img/team-1-800x800.jpg';
 import SettingsForm from "./SettingsForm.js";
 import ChangePass from "./ChangePass.js";
-import { useState } from "react";
+import { api } from "services/api.js";
+import { useEffect, useState } from "react";
+const myApi = new api();
 
 export default function ProfileCard({ user }) {
   const [open, setOpen] = useState(0);
+
   return (
     <Card>
       <div className="flex flex-wrap justify-center">
