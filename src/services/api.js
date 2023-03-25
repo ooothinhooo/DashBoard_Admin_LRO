@@ -85,4 +85,14 @@ export class api {
       data: { _id: _id, userId: userId },
     });
   }
+
+  async FUNC_CHANGE_PASS(auth, data) {
+    return axios({
+      method: "post",
+      headers: { auth: auth },
+
+      url: `$http://localhost:8080/apiart/changepass`,
+      data,
+    });
+  }
 }

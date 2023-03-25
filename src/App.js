@@ -19,7 +19,7 @@ function App() {
   console.log(user);
   return (
     <>
-      {user && user ? (
+      {user && user.access == "admin" ? (
         <>
           <div>
             <Sidebar />

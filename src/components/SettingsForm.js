@@ -15,7 +15,7 @@ export default function SettingsForm() {
           </div>
         </CardHeader>
         <CardBody>
-          <form>
+          <div>
             <h6 className="text-purple-500 text-sm mt-3 mb-6 font-light uppercase">
               User Information
             </h6>
@@ -63,7 +63,8 @@ export default function SettingsForm() {
             <div className="flex flex-wrap mt-10 font-light">
               <Textarea color="purple" placeholder="About Me" />
             </div> */}
-          </form>
+            <Button>Submit</Button>
+          </div>
         </CardBody>
       </Card>
     );

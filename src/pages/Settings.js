@@ -11,7 +11,7 @@ export default function Dashboard() {
     <>
       <div className="bg-light-blue-500 pt-14 pb-28 px-3 md:px-8 h-auto">
         <div className="container mx-auto max-w-full">
-          <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4">
+          {/* <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4">
             <StatusCard
               color="pink"
               icon="trending_up"
@@ -52,7 +52,7 @@ export default function Dashboard() {
               percentageColor="green"
               date="Since last month"
             />
-          </div>
+          </div> */}
         </div>
       </div>
 

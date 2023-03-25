@@ -9,8 +9,10 @@ import Button from '@material-tailwind/react/Button';
 import ProfilePicture from 'assets/img/team-1-800x800.jpg';
 import SettingsForm from "./SettingsForm.js";
 import ChangePass from "./ChangePass.js";
+import { useState } from "react";
 
 export default function ProfileCard({ user }) {
+  const [open, setOpen] = useState(0);
   return (
     <Card>
       <div className="flex flex-wrap justify-center">
@@ -66,21 +68,37 @@ export default function ProfileCard({ user }) {
       <CardFooter className="flex justify-center items-center">
         <div className="flex ">
           <div className="w-full flex justify-center ">
-            <Button color="purple" buttonType="link" ripple="dark">
+            <Button
+              onClick={() => setOpen(1)}
+              color="purple"
+              buttonType="link"
+              ripple="dark"
+            >
               Edit Profile
             </Button>
           </div>
           <div className="w-full flex justify-center ">
-            <Button color="purple" buttonType="link" ripple="dark">
+            <Button
+              onClick={() => setOpen(2)}
+              color="purple"
+              buttonType="link"
+              ripple="dark"
+            >
               Change Password
             </Button>
           </div>
         </div>
       </CardFooter>
-      <div className="xl:col-start-1 xl:col-end-5 px-4 mb-16">
+      <div className={open == 1 ? "" : "hidden"}>
+        <Button onClick={() => setOpen(0)} className="mb-6 justify-end">
+          X
+        </Button>
         <SettingsForm user={user} />
       </div>
-      <div className="xl:col-start-1 xl:col-end-5 px-4 mb-16">
+      <div className={open == 2 ? "" : "hidden"}>
+        <Button onClick={() => setOpen(0)} className="mb-6 justify-end">
+          X
+        </Button>
         <ChangePass user={user} />
       </div>
     </Card>
