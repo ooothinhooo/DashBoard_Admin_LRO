@@ -21,7 +21,7 @@ export default function CardTable() {
       });
   };
 
-  const DeleteUser = (_id) => {
+  const handleDelete = (_id) => {
     myApi
       .FUNC_DELETE_USER(_id)
       .then((response) => {
@@ -41,6 +41,64 @@ export default function CardTable() {
       .catch((error) => {
         console.log(error);
       });
+  };
+
+  const DeleteUser = (_id, first_name, last_name) => {
+    try {
+      Swal.fire({
+        title: "Bạn  Muốn Xoá Người Dùng",
+        text: first_name + " " + last_name,
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          handleDelete(_id);
+        }
+      });
+    } catch (error) {}
+  };
+
+  const handleChangeAcces = (_id) => {
+    myApi
+      .FUNC_CHANGE_ACCESS_USER(_id)
+      .then((response) => {
+        // setDataUser(response.data.data.TUser);
+        console.log(response);
+        if (response.data.status == 200) {
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Thay Đổi Thành Công",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          GetApi();
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const ChangeAccesUser = (_id, first_name, last_name) => {
+    try {
+      Swal.fire({
+        title: "Bạn Muốn Thay Đổi Quyền Cho Người Dùng",
+        text: first_name + " " + last_name,
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          handleChangeAcces(_id);
+        }
+      });
+    } catch (error) {}
   };
 
   useEffect(() => {
@@ -75,7 +133,6 @@ export default function CardTable() {
                     {i.docs.length}
                   </th>
                   <th className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
-                    <i className="fas fa-circle fa-sm text-orange-500 mr-2"></i>{" "}
                     {i.articles.length}
                   </th>
 
@@ -84,12 +141,25 @@ export default function CardTable() {
                     <div className="flex gap-4">
                       <Button variant="gradient">View User</Button>
                       <Button
-                        onClick={(e) => DeleteUser(i?._id)}
+                        onClick={(e) =>
+                          DeleteUser(i?._id, i.first_name, i.last_name)
+                        }
                         variant="outlined"
                       >
                         Delete
                       </Button>
+                      <Button
+                        onClick={(e) =>
+                          ChangeAccesUser(i?._id, i.first_name, i.last_name)
+                        }
+                        variant="outlined"
+                      >
+                        Change Access
+                      </Button>
                     </div>
+                  </th>
+                  <th className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
+                    {i.access}
                   </th>
                 </tr>
               </>
@@ -120,6 +190,9 @@ export default function CardTable() {
 
                 <th className="px-2 text-purple-500 align-middle border-b border-solid border-gray-200 py-3 text-sm whitespace-nowrap font-light text-left">
                   Action
+                </th>
+                <th className="px-2 text-purple-500 align-middle border-b border-solid border-gray-200 py-3 text-sm whitespace-nowrap font-light text-left">
+                  Access
                 </th>
               </tr>
             </thead>

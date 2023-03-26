@@ -12,6 +12,7 @@ import {
 
 import { api } from "services/api.js";
 import axios from "axios";
+import Swal from "sweetalert2";
 const myApi = new api();
 export default function Login() {
   const [Form, setForm] = useState({
@@ -28,16 +29,30 @@ export default function Login() {
   const handleLogin = async () => {
     try {
       console.table(Form);
-
       const result = await axios.post("http://localhost:8080/api/login", Form);
       console.log(result);
+
       if (result.data.status == 100) {
         localStorage.setItem("user", JSON.stringify(result.data.data));
-
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Đăng nhập Thành Công",
+          showConfirmButton: false,
+          timer: 1500,
+        });
         setTimeout(() => {
           // navigation("/");
           window.location.href = "/";
         }, 2000);
+      } else {
+        Swal.fire({
+          position: "center",
+          icon: "warning",
+          title: "Đăng nhập Thất Bại",
+          showConfirmButton: false,
+          timer: 1500,
+        });
       }
     } catch (error) {}
   };

@@ -100,9 +100,9 @@ export class api {
     return axios({
       method: "post",
       headers: { auth: auth },
-  
+
       url: `http://localhost:8080/apiart/updateinfo`,
-      data
+      data,
     });
   }
 
@@ -110,8 +110,20 @@ export class api {
     return axios({
       method: "post",
       // headers: { auth: auth },
-  
+
       url: `http://localhost:8080/api/user/`,
+      data: {
+        _id: _id,
+      },
+    });
+  }
+
+  async FUNC_CHANGE_ACCESS_USER(_id) {
+    return axios({
+      method: "post",
+      // headers: { auth: auth },
+
+      url: `http://localhost:8080/admin/changeaccess`,
       data: {
         _id: _id,
       },
