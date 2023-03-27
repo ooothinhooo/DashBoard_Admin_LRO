@@ -20,6 +20,7 @@ import ViewTaiLieu from "pages/ViewTaiLieu.jsx";
 function App() {
   const { user } = useContext(ProductContext);
   console.log(user);
+  console.log(process.env.REACT_APP_API_KEY);
   return (
     <>
       {user && user.access == "admin" ? (

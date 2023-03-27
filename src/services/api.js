@@ -1,5 +1,6 @@
 import axios from "axios";
 import {
+  ChangeAccess,
   chart,
   DeleteArt,
   DeleteDoc,
@@ -10,11 +11,15 @@ import {
   StatisticsDocs,
   StatisticsUsers,
 } from "./apiConstan.js";
+// const API_URL = "http://localhost:8080";
+export const API_URL = process.env.REACT_APP_API_KEY;
+
 export class api {
   async LOGIN(data) {
     return axios({
       method: "post",
-      url: "http://localhost:8080/api/login",
+      // url: "http://localhost:8080/api/login",
+      url: `${API_URL}/api/login`,
       data,
     });
   }
@@ -90,8 +95,9 @@ export class api {
     return axios({
       method: "post",
       headers: { auth: auth },
+      url: `${API_URL}/user/changepass`,
 
-      url: `http://localhost:8080/apiart/changepass`,
+      // url: `http://localhost:8080/apiart/changepass`,
       data,
     });
   }
@@ -100,8 +106,8 @@ export class api {
     return axios({
       method: "post",
       headers: { auth: auth },
-
-      url: `http://localhost:8080/apiart/updateinfo`,
+      url: `${API_URL}/user/updateinfo`,
+      // url: `http://localhost:8080/apiart/updateinfo`,
       data,
     });
   }
@@ -110,8 +116,9 @@ export class api {
     return axios({
       method: "post",
       // headers: { auth: auth },
+      url: `${API_URL}/api/user`,
 
-      url: `http://localhost:8080/api/user/`,
+      // url: `http://localhost:8080/api/user/`,
       data: {
         _id: _id,
       },
@@ -123,7 +130,7 @@ export class api {
       method: "post",
       // headers: { auth: auth },
 
-      url: `http://localhost:8080/admin/changeaccess`,
+      url: ChangeAccess,
       data: {
         _id: _id,
       },
@@ -134,8 +141,8 @@ export class api {
     return axios({
       method: "post",
       // headers: { auth: auth },
-
-      url: `http://localhost:8080/api/user/`,
+      url: `${API_URL}/api/user`,
+      // url: `http://localhost:8080/api/user/`,
       data: {
         _id: _id,
       },
@@ -146,8 +153,8 @@ export class api {
     return axios({
       method: "post",
       // headers: { auth: auth },
-
-      url: `http://localhost:8080/api/findonedoc`,
+      url: `${API_URL}/api/findonedoc`,
+      // url: `http://localhost:8080/api/findonedoc`,
       data: {
         _id: _id,
       },
@@ -158,8 +165,9 @@ export class api {
     return axios({
       method: "post",
       // headers: { auth: auth },
+      url: `${API_URL}/api/findoneart`,
 
-      url: `http://localhost:8080/api/findoneart`,
+      // url: `http://localhost:8080/api/findoneart`,
       data: {
         _id: _id,
       },
