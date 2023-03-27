@@ -92,7 +92,7 @@ export default function ChangePass({ user }) {
         className="mb-4 grid h-28 place-items-center"
       >
         <h3 variant="h3" color="white">
-          Sign In
+          Change Password
         </h3>
       </CardHeader>
       <CardBody className="flex flex-col gap-4">

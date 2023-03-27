@@ -129,4 +129,40 @@ export class api {
       },
     });
   }
+
+  async FUNC_CALL_USER(_id) {
+    return axios({
+      method: "post",
+      // headers: { auth: auth },
+
+      url: `http://localhost:8080/api/user/`,
+      data: {
+        _id: _id,
+      },
+    });
+  }
+
+  async FUNC_GET_DOC(_id) {
+    return axios({
+      method: "post",
+      // headers: { auth: auth },
+
+      url: `http://localhost:8080/api/findonedoc`,
+      data: {
+        _id: _id,
+      },
+    });
+  }
+
+  async FUNC_GET_ART(_id) {
+    return axios({
+      method: "post",
+      // headers: { auth: auth },
+
+      url: `http://localhost:8080/api/findoneart`,
+      data: {
+        _id: _id,
+      },
+    });
+  }
 }

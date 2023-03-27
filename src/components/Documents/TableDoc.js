@@ -112,7 +112,7 @@ function TableDoc() {
                               </Button>
                             </div>
                             <h3 class=" text-gray-800 md:text-lg text-[16px] font-light">
-                              <NavLink to={`/tailieu/view/${item?._id}`}>
+                              <NavLink to={`/view/tailieu/${item?._id}`}>
                                 <h3 class="text-gray-900 hover:text-blue-500 cursor-pointer font-extrabold m-1 py-1 ">
                                   {item?.title.substring(0, 27) + "..."}
                                 </h3>

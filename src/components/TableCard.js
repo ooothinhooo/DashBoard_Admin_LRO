@@ -6,6 +6,8 @@ import Image from "@material-tailwind/react/Image";
 import Swal from "sweetalert2";
 import { useEffect, useState } from "react";
 import { api } from "services/api.js";
+import ViewProfileUser from "./ViewProfileUser.jsx";
+import { NavLink } from "react-router-dom";
 const myApi = new api();
 export default function CardTable() {
   const [dataUser, setDataUser] = useState([]);
@@ -112,8 +114,14 @@ export default function CardTable() {
           dataUser?.map((i) => {
             return (
               <>
-                <tr>
-                  <th className="border-b  border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
+                <tr
+                  className={`${
+                    i.access == "admin" ? "bg-gray-300 " : ""
+                  }  rounded-3xl`}
+                >
+                  <th
+                    className={` border-b  border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-2 text-left`}
+                  >
                     <div className="flex justify-start items-center">
                       <div className="w-10 h-10 rounded-full border-2 border-white">
                         <Image
@@ -129,17 +137,19 @@ export default function CardTable() {
                       </span>
                     </div>
                   </th>
-                  <th className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
+                  <th className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-2 text-left">
                     {i.docs.length}
                   </th>
-                  <th className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
+                  <th className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-2 text-left">
                     {i.articles.length}
                   </th>
 
-                  <th className="justify-end border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
+                  <th className="justify-end border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-2 text-left">
                     {/* <Progress color="red" value="60" /> */}
                     <div className="flex gap-4">
-                      <Button variant="gradient">View User</Button>
+                      <Button variant="gradient">
+                        <NavLink to={`/u/${i._id}`}>View User</NavLink>
+                      </Button>
                       <Button
                         onClick={(e) =>
                           DeleteUser(i?._id, i.first_name, i.last_name)
@@ -158,9 +168,9 @@ export default function CardTable() {
                       </Button>
                     </div>
                   </th>
-                  <th className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
+                  {/* <th className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
                     {i.access}
-                  </th>
+                  </th> */}
                 </tr>
               </>
             );
@@ -168,6 +178,8 @@ export default function CardTable() {
       </>
     );
   }
+
+
   return (
     <Card>
       <CardHeader color="purple" contentPosition="left">
@@ -191,9 +203,9 @@ export default function CardTable() {
                 <th className="px-2 text-purple-500 align-middle border-b border-solid border-gray-200 py-3 text-sm whitespace-nowrap font-light text-left">
                   Action
                 </th>
-                <th className="px-2 text-purple-500 align-middle border-b border-solid border-gray-200 py-3 text-sm whitespace-nowrap font-light text-left">
+                {/* <th className="px-2 text-purple-500 align-middle border-b border-solid border-gray-200 py-3 text-sm whitespace-nowrap font-light text-left">
                   Access
-                </th>
+                </th> */}
               </tr>
             </thead>
             <tbody>

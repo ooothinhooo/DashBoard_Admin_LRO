@@ -14,6 +14,9 @@ import { ArticleManagement } from "pages/index.js";
 import { DocumentManagement } from "pages/index.js";
 import { Login } from "pages/index.js";
 import { ProductContext } from "contexts/ProductContextProvider.js";
+import ViewProfileUser from "components/ViewProfileUser.jsx";
+import ViewBaiViet from "pages/ViewBaiViet.jsx";
+import ViewTaiLieu from "pages/ViewTaiLieu.jsx";
 function App() {
   const { user } = useContext(ProductContext);
   console.log(user);
@@ -27,6 +30,9 @@ function App() {
               <Switch>
                 <Route exact path="/" component={Dashboard} />
 
+                <Route exact path="/view/tailieu/:id" component={ViewTaiLieu} />
+                <Route exact path="/view/baiviet/:id" component={ViewBaiViet} />
+                <Route exact path="/u/:id" component={ViewProfileUser} />
                 <Route exact path="/acc" component={AccountManagement} />
                 <Route exact path="/arts" component={ArticleManagement} />
                 <Route exact path="/docs" component={DocumentManagement} />

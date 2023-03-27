@@ -6,6 +6,7 @@ import Card from "@material-tailwind/react/Card";
 import CardHeader from "@material-tailwind/react/CardHeader";
 import CardBody from "@material-tailwind/react/CardBody";
 import { api } from "services/api.js";
+import { NavLink } from "react-router-dom";
 const myApi = new api();
 export default function CardArts() {
   const [page, setPage] = useState(Number(1));
@@ -146,8 +147,10 @@ export default function CardArts() {
                     </div>
 
                     <div class="mx-2">
-                      <div class=" text-xl font-bold">
-                        {item?.title.substring(0, 50) + "..."}
+                      <div class=" text-xl font-bold hover:text-blue-600">
+                        <NavLink to={`/view/baiviet/${item?._id}`}>
+                          {item?.title.substring(0, 50) + "..."}
+                        </NavLink>
                       </div>
                       <div class="text-sm text-neutral-200">
                         {item?.content.substring(0, 200) + "..."}
