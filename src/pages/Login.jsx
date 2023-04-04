@@ -14,6 +14,7 @@ import { api } from "services/api.js";
 import axios from "axios";
 import Swal from "sweetalert2";
 const myApi = new api();
+const API_URL = process.env.REACT_APP_API_KEY;
 export default function Login() {
   const [Form, setForm] = useState({
     username: "",
@@ -29,7 +30,7 @@ export default function Login() {
   const handleLogin = async () => {
     try {
       console.table(Form);
-      const result = await axios.post("http://localhost:8080/api/login", Form);
+      const result = await axios.post(`${API_URL}/api/login`, Form);
       console.log(result);
 
       if (result.data.status == 100) {
