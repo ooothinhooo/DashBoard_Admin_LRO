@@ -27,7 +27,7 @@ function TableDoc() {
   const GetApi = async () => {
     try {
       const result = await myApi.FUNC_GET_PAGE_DOCS(page, cate);
-      console.log(result.data);
+      // console.log(result.data);
       setDataDocs(result.data);
     } catch (error) {}
   };
@@ -202,7 +202,7 @@ function TableDoc() {
   const nextPage = () => {
     const maxPage = Math.ceil(dataDocs.length / 15);
     setPage(page > maxPage ? 1 : page + 1);
-    console.log(page);
+    // console.log(page);
   };
   const prevPage = () => {
     setPage(page <= 1 ? 1 : page - 1);

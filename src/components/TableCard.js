@@ -28,7 +28,7 @@ export default function CardTable() {
       .FUNC_DELETE_USER(_id)
       .then((response) => {
         // setDataUser(response.data.data.TUser);
-        console.log(response);
+        // console.log(response);
         if (response.data.status == 200) {
           Swal.fire({
             position: "center",
@@ -68,7 +68,7 @@ export default function CardTable() {
       .FUNC_CHANGE_ACCESS_USER(_id)
       .then((response) => {
         // setDataUser(response.data.data.TUser);
-        console.log(response);
+        // console.log(response);
         if (response.data.status == 200) {
           Swal.fire({
             position: "center",

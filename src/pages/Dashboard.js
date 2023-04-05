@@ -13,7 +13,7 @@ export default function Dashboard() {
   const GetApi = async () => {
     try {
       const result = await myApi.FUNC_GET_CHART();
-      console.log(result);
+      // console.log(result);
       setData(result.data.data);
     } catch (error) {}
   };
@@ -21,7 +21,7 @@ export default function Dashboard() {
   const GetApiUser = async () => {
     try {
       const result = await myApi.FUNC_GET_STATISTICSUSERS();
-      console.log(result);
+      // console.log(result);
       setDataUser(result.data.data);
     } catch (error) {}
   };

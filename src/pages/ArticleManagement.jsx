@@ -11,7 +11,7 @@ function ArticleManagement() {
     myApi
       .FUNC_GET_STATISTICSARTS()
       .then((response) => {
-        console.log(response.data.data);
+        // console.log(response.data.data);
         setData(response.data.data);
       })
       .catch((error) => {

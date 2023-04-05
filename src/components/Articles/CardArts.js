@@ -14,7 +14,7 @@ export default function CardArts() {
   const GetApi = async () => {
     try {
       const result = await myApi.FUNC_GET_PAGE_ARTS(page);
-      console.log(result.data);
+      // console.log(result.data);
       setData(result.data);
     } catch (error) {}
   };
@@ -22,7 +22,7 @@ export default function CardArts() {
   const nextPage = () => {
     const maxPage = Math.ceil(data.length / 15);
     setPage(page > maxPage ? 1 : page + 1);
-    console.log(page);
+    // console.log(page);
   };
 
   const prevPage = () => {

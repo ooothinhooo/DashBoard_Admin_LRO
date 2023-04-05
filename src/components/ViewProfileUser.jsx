@@ -28,9 +28,9 @@ function ViewProfileUser() {
 
   // console.log(data);
   const CallAPI = async () => {
-    console.log(id);
+    // console.log(id);
     const result = await myApi.FUNC_CALL_USER(id);
-    console.log(result.data);
+    // console.log(result.data);
     setData(result.data.data);
   };
 

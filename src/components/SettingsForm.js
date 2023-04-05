@@ -24,7 +24,7 @@ export default function SettingsForm({ user }) {
   const CallAPI = async () => {
     try {
       const result = await myApi.FUNC_VIEW_PROFILE_USER(id);
-      console.log(result);
+      // console.log(result);
       var re = result.data.data;
       setForm({
         first_name: re.first_name,
@@ -50,14 +50,14 @@ export default function SettingsForm({ user }) {
 
   const handleUpdate = async (e) => {
     e.preventDefault();
-    console.log(e);
+    // console.log(e);
 
     try {
       if (Form.phone.length == 10) {
         if (!isFormEmpty()) {
-          console.log(Form);
+          // console.log(Form);
           const result = await myApi.FUNC_UPDATE_PROFILE_USER(auth, Form);
-          console.log(result);
+          // console.log(result);
           if (result.status == 200) {
             if (result.data.status == 200) {
               Swal.fire({

@@ -10,7 +10,7 @@ function ViewTaiLieu() {
   const GetAPI = async () => {
     try {
       const result = await myApi.FUNC_GET_DOC(id);
-      console.log(result);
+      // console.log(result);
       setData(result.data.data);
     } catch (error) {}
   };

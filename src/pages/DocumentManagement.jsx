@@ -12,7 +12,7 @@ function DocumentManagement() {
     myApi
       .FUNC_GET_STATISTICSDOCS()
       .then((response) => {
-        console.log(response.data.data);
+        // console.log(response.data.data);
         setData(response.data.data);
       })
       .catch((error) => {

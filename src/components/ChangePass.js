@@ -28,8 +28,8 @@ export default function ChangePass({ user }) {
   const handleSubmit = async (e) => {
     if (Form.ConfirmPass == Form.password) {
       const result = await myApi.FUNC_CHANGE_PASS(auth, Form);
-      console.log(result);
-      console.log("change");
+      // console.log(result);
+      // console.log("change");
 
       if (result.data.status == 200) {
         let timerInterval;
@@ -81,7 +81,7 @@ export default function ChangePass({ user }) {
   };
 
   useEffect(() => {
-    console.log(Form);
+    // console.log(Form);
   }, [Form]);
 
   return (

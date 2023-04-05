@@ -11,7 +11,7 @@ function ViewBaiViet() {
   const GetAPI = async () => {
     try {
       const result = await myApi.FUNC_GET_ART(id);
-      console.log(result);
+      // console.log(result);
       setData(result.data.data);
     } catch (error) {}
   };

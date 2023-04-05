@@ -7,11 +7,11 @@ import { useEffect, useState } from "react";
 const myApi = new api();
 
 export default function ChartLine({ data }) {
-  console.log(data);
+  // console.log(data);
 
   useEffect(() => {
     const RenderLine = () => {
-      console.log(data);
+      // console.log(data);
       var config = {
         type: "line",
         data: {

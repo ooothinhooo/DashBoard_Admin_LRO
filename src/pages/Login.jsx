@@ -31,7 +31,7 @@ export default function Login() {
     try {
       console.table(Form);
       const result = await axios.post(`${API_URL}/api/login`, Form);
-      console.log(result);
+      // console.log(result);
 
       if (result.data.status == 100) {
         localStorage.setItem("user", JSON.stringify(result.data.data));
