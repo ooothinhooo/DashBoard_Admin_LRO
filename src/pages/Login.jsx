@@ -44,7 +44,8 @@ export default function Login() {
         });
         setTimeout(() => {
           // navigation("/");
-          window.location.href("/");
+          // window.location.href("/");
+          window.location = "/";
         }, 2000);
       } else {
         Swal.fire({

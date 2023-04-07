@@ -71,7 +71,8 @@ export default function SettingsForm({ user }) {
               localStorage.clear();
 
               // navigation("/login");
-              window.location.href("/login");
+              // window.location.href("/login");
+              window.location = "/login";
             }
           } else {
             Swal.fire({

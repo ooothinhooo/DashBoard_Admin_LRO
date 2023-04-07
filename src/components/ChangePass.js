@@ -49,8 +49,8 @@ export default function ChangePass({ user }) {
           willClose: () => {
             clearInterval(timerInterval);
 
-            window.location.href(`/u/${user?.userId}`);
-
+            // window.location.href(`/u/${user?.userId}`);
+            window.location = `/u/${user?.userId}`;
             setIsPass("");
             setIsConfirmPass("");
           },

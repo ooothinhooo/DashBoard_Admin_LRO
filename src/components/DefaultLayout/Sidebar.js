@@ -41,7 +41,8 @@ export default function Sidebar() {
   ];
   const handlerLogout = () => {
     localStorage.clear();
-    window.location.href("/");
+    // window.location.href("/");
+    window.location = "/login";
   };
   return (
     <>
