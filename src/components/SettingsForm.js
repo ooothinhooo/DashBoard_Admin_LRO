@@ -7,6 +7,7 @@ import Textarea from '@material-tailwind/react/Textarea';
 import Swal from "sweetalert2";
 import { api } from "services/api.js";
 import { useEffect, useState } from "react";
+
 const myApi = new api();
 export default function SettingsForm({ user }) {
   const id = user?.userId;
@@ -68,7 +69,9 @@ export default function SettingsForm({ user }) {
                 timer: 1500,
               });
               localStorage.clear();
-              window.location = "/login";
+
+              // navigation("/login");
+              window.location.href("/login");
             }
           } else {
             Swal.fire({

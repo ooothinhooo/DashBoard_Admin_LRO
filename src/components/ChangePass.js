@@ -10,6 +10,7 @@ import {
 } from "@material-tailwind/react";
 import Swal from "sweetalert2";
 import axios from "axios";
+
 import { api } from "services/api.js";
 const myApi = new api();
 export default function ChangePass({ user }) {
@@ -47,7 +48,9 @@ export default function ChangePass({ user }) {
           },
           willClose: () => {
             clearInterval(timerInterval);
-            window.location.href = `/u/${user?.userId}`;
+
+            window.location.href(`/u/${user?.userId}`);
+
             setIsPass("");
             setIsConfirmPass("");
           },

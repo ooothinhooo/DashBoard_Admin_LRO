@@ -5,6 +5,7 @@ import Icon from "@material-tailwind/react/Icon";
 import H6 from "@material-tailwind/react/Heading6";
 import { Button } from "@material-tailwind/react";
 import { ProductContext } from "contexts/ProductContextProvider.js";
+
 export default function Sidebar() {
   const { user } = useContext(ProductContext);
 
@@ -40,7 +41,7 @@ export default function Sidebar() {
   ];
   const handlerLogout = () => {
     localStorage.clear();
-    window.location = "/login";
+    window.location.href("/");
   };
   return (
     <>

@@ -29,7 +29,7 @@ export default function Login() {
   };
   const handleLogin = async () => {
     try {
-      console.table(Form);
+      // console.table(Form);
       const result = await axios.post(`${API_URL}/api/login`, Form);
       // console.log(result);
 
@@ -44,7 +44,7 @@ export default function Login() {
         });
         setTimeout(() => {
           // navigation("/");
-          window.location.href = "/";
+          window.location.href("/");
         }, 2000);
       } else {
         Swal.fire({
@@ -58,7 +58,7 @@ export default function Login() {
     } catch (error) {}
   };
   useEffect(() => {
-    console.table(Form);
+    // console.table(Form);
   }, [Form]);
   return (
     <div className="w-full h-screen flex justify-center items-center">
